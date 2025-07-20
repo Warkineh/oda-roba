@@ -13,7 +13,7 @@ const ovo = Ovo({
 });
 
 export const metadata = {
-  title: "Portfolio - Warkineh",
+  title: "Oda Roba Hospital",
   description: "",
 };
 
