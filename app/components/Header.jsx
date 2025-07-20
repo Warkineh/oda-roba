@@ -59,7 +59,7 @@ const Home = ({ isDarkMode }) => {
       )}
 
       {/* Rest of your existing content remains exactly the same */}
-      <div className=" relative z-10 w-full max-w-6xl mx-auto flex flex-col items-center ">
+      <div className=" relative z-10 w-full max-w-6xl mx-auto flex flex-col items-center mt-20">
         {/* Logo with Floating Animation */}
         <motion.div
           initial={{ y: -50, opacity: 0, scale: 0.8 }}
