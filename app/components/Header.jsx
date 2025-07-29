@@ -17,6 +17,7 @@ const Home = ({ isDarkMode }) => {
   }
 
   return (
+    <div className="w-screen min-w-full overflow-x-hidden">
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -58,7 +59,6 @@ const Home = ({ isDarkMode }) => {
         </div>
       )}
 
-      {/* Rest of your existing content remains exactly the same */}
       <div className=" relative z-10 w-full max-w-6xl mx-auto flex flex-col items-center mt-20">
         {/* Logo with Floating Animation */}
         <motion.div
@@ -75,7 +75,7 @@ const Home = ({ isDarkMode }) => {
             rotate: [0, -5, 5, 0],
             transition: { duration: 0.6 }
           }}
-          className="relative group mb-8"
+          className="relative group mb-8" 
         >
           <div className="absolute inset-0 rounded-full bg-blue-500 opacity-0 group-hover:opacity-20 blur-xl transition-all duration-500 -z-10"/>
           <Image 
@@ -222,6 +222,7 @@ const Home = ({ isDarkMode }) => {
         </motion.div>
       </div>
     </motion.div>
+    </div>
   )
 }
 

@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 
 const About = ({isDarkMode}) => {
   return (
+    <div className="w-screen min-w-full overflow-x-hidden">
     <motion.div 
       id='about' 
       className='w-full px-[5%] lg:px-[12%] py-16 md:py-24 scroll-mt-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800'
@@ -62,7 +63,9 @@ const About = ({isDarkMode}) => {
           </h3>
           
           <p className='mb-8 text-lg leading-relaxed text-gray-600 dark:text-gray-300'>
-            Established in 2024, our hospital in Bale Robe represents the next generation of medical care. We've built our facility with the latest technology and staffed it with passionate specialists to deliver modern, compassionate healthcare across 12+ specialized departments.
+            Established by a dedicated team of 30 doctors, our hospital embodies a spirit of unity and collaboration.
+            We aspire to provide comprehensive healthcare services under one roof, ensuring that all types of care are accessible to the community.
+            Located in Bale, Robe city, Eastern Ethiopia,we are committed to enhancing the health and well-being of our patients through compassionate and quality medical care.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
@@ -104,6 +107,7 @@ const About = ({isDarkMode}) => {
         </motion.div>
       </motion.div>
     </motion.div>
+    </div>
   )
 }
 

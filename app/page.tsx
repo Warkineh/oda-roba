@@ -6,6 +6,10 @@ import Footer from "./components/Footer"
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Services from "./components/Services";
+import Machines from "./components/Machines";
+import Doctors from "./components/Doctors";
+import Blogs from "./components/Blogs";
+import Teams from "./components/Teams";
 
 export default function Home() {
 
@@ -35,8 +39,13 @@ if(isDarkMode){
     <Header isDarkMode={isDarkMode}/>
     <About isDarkMode={isDarkMode}/>
     <Services isDarkMode={isDarkMode}/>
+    <Machines isDarkMode={isDarkMode}/>
+    <Doctors isDarkMode={isDarkMode}/>
+    <Teams isDarkMode={isDarkMode}/>
+    <Blogs isDarkMode={isDarkMode}/>
     <Contact isDarkMode={isDarkMode}/>
     <Footer isDarkMode={isDarkMode}/>
+    
     </>
   );
 }

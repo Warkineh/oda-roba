@@ -41,53 +41,74 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
     { name: 'Home', href: '#top' },
     { name: 'About Us', href: '#about' },
     { name: 'Services', href: '#services' },
+    { name: 'Machines', href: '#machines' },
+    { name: 'Doctors', href: '#doctors' },
+    { name: 'Teams', href: '#teams' },
+    { name: 'Blogs', href: '#blogs' },
     { name: 'Contact', href: '#contact' }
   ]
 
   return (
     <>
       {/* Background Decoration */}
-      <div className='fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] dark:hidden'>
+      <motion.div 
+        className='fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] dark:hidden'
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
         <Image src={assets.header_bg_color} alt='' className='w-full' />
-      </div>
+      </motion.div>
 
       {/* Main Navbar */}
       <motion.nav 
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className={`w-full fixed px-4 sm:px-6 lg:px-8 xl:px-[8%] py-3 flex items-center justify-between z-50 transition-all duration-300
+        className={`w-full fixed px-4 sm:px-6 lg:px-8 xl:px-10 py-3 flex items-center justify-between z-50 transition-all duration-300
           ${isScroll 
-            ? "bg-white/90 backdrop-blur-md shadow-sm dark:bg-gray-900/90 dark:shadow-gray-800/50" 
+            ? "bg-white/95 backdrop-blur-md shadow-sm dark:bg-gray-900/95 dark:shadow-gray-800/30" 
             : "bg-transparent"}`}
       >
-        {/* Logo */}
-<motion.a 
-  href="#top"
-  whileHover={{ scale: 1.05 }}
-  className="flex items-center gap-2"
->
-  <Image 
-    src={isDarkMode ? assets.logo_dark : assets.logo} 
-    alt="Oda Roba Hospital Logo" 
-    width={140}
-    height={60}
-    className='w-32 lg:w-36 cursor-pointer'
-  />
-  <span className={`hidden lg:block text-lg font-bold bg-clip-text text-transparent 
-    ${isDarkMode 
-      ? 'bg-gradient-to-r from-blue-300 to-purple-400' 
-      : 'bg-gradient-to-r from-blue-600 to-purple-600'
-    }`}>
-    Oda Roba Hospital
-  </span>
-</motion.a>
+        {/* Logo with Enhanced Gradient Text - Left Aligned */}
+        <motion.a 
+          href="#top"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="flex-shrink-0 flex items-center gap-3"
+        >
+          <Image 
+            src={isDarkMode ? assets.logo_dark : assets.logo} 
+            alt="Oda Roba Hospital Logo" 
+            width={140}
+            height={60}
+            className='w-32 lg:w-36 cursor-pointer transition-transform duration-300'
+          />
+          
+          {/* Enhanced Gradient Text */}
+          <motion.span
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+            className={`hidden lg:block text-2xl font-bold bg-gradient-to-r 
+                        ${isDarkMode 
+                          ? 'from-blue-300 via-blue-400 to-blue-500' 
+                          : 'from-blue-500 via-blue-600 to-blue-700'} 
+                        bg-clip-text text-transparent tracking-tight`}
+          >
+            Oda Roba Hospital
+          </motion.span>
+        </motion.a>
 
-        {/* Desktop Navigation */}
-        <ul className={`hidden md:flex items-center gap-1 rounded-full px-6 py-2 transition-all duration-300
-          ${isScroll 
-            ? "bg-white/80 dark:bg-gray-800/80 shadow-md" 
-            : "bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm"}`}
+        {/* Desktop Navigation - Adjusted Spacing */}
+        <motion.ul 
+          className={`hidden md:flex items-center gap-1 px-4 py-2 transition-all duration-300 ml-8
+            ${isScroll 
+              ? "bg-white/90 dark:bg-gray-800/90 shadow-lg rounded-full" 
+              : "bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-full"}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
         >
           {navItems.map((item, index) => (
             <motion.li 
@@ -104,23 +125,26 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                     : 'text-gray-700 hover:text-gray-900'}`}
               >
                 {item.name}
-                <span className={`absolute bottom-1 left-1/2 h-0.5 w-0 group-hover:w-3/5 transition-all duration-300 
-                  ${isDarkMode ? 'bg-blue-400' : 'bg-blue-600'}`}
+                <motion.span 
+                  className={`absolute bottom-1 left-1/2 h-0.5 ${isDarkMode ? 'bg-blue-400' : 'bg-blue-600'}`}
+                  initial={{ width: 0 }}
+                  whileHover={{ width: '60%' }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                   style={{ transform: 'translateX(-50%)' }}
                 />
               </a>
             </motion.li>
           ))}
-        </ul>
+        </motion.ul>
 
-        {/* Right Side Controls */}
-        <div className='flex items-center gap-4'>
+        {/* Right Side Controls - With Spacing */}
+        <div className='flex items-center gap-6'>
           {/* Theme Toggle */}
           <motion.button 
             onClick={() => setIsDarkMode(prev => !prev)}
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.1, rotate: 15 }}
             whileTap={{ scale: 0.9 }}
-            className={`p-2 rounded-full ${isDarkMode ? 'bg-gray-700' : 'bg-gray-200'}`}
+            className={`p-2 rounded-full ${isDarkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-200 hover:bg-gray-300'} transition-colors duration-300`}
             aria-label="Toggle dark mode"
           >
             <Image 
@@ -128,29 +152,9 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
               alt={isDarkMode ? 'Light mode' : 'Dark mode'} 
               width={24}
               height={24}
-              className="w-5"
+              className="w-5 transition-transform duration-300 hover:rotate-12"
             />
           </motion.button>
-
-          {/* Contact Button (Desktop) */}
-          <motion.a
-            href="#contact"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className={`hidden lg:flex items-center gap-2 px-6 py-2.5 rounded-full font-medium transition-colors duration-300
-              ${isDarkMode 
-                ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg' 
-                : 'bg-blue-600 text-white hover:bg-blue-700 shadow-md'}`}
-          >
-            Contact Us
-            <Image 
-              src={assets.right_arrow_white} 
-              alt="" 
-              width={16}
-              height={16}
-              className="w-4"
-            />
-          </motion.a>
 
           {/* Mobile Menu Button */}
           <motion.button 
@@ -165,7 +169,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
               alt="Menu" 
               width={24}
               height={24}
-              className="w-6"
+              className="w-6 transition-transform duration-300 hover:rotate-90"
             />
           </motion.button>
         </div>
@@ -180,6 +184,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                 exit={{ opacity: 0 }}
                 onClick={() => setIsMenuOpen(false)}
                 className="fixed inset-0 z-40 bg-black"
+                transition={{ duration: 0.3 }}
               />
               
               <motion.div
@@ -187,15 +192,16 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                 initial={{ x: '100%' }}
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
-                transition={{ type: 'tween', ease: 'easeInOut' }}
-                className={`fixed inset-y-0 right-0 w-64 z-50 h-screen ${isDarkMode ? 'bg-gray-800' : 'bg-white'} shadow-2xl`}
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                className={`fixed inset-y-0 right-0 w-72 z-50 h-screen ${isDarkMode ? 'bg-gray-800' : 'bg-white'} shadow-2xl`}
               >
                 <div className="flex flex-col h-full p-6">
                   {/* Close Button */}
                   <div className="flex justify-end mb-8">
                     <motion.button
                       onClick={() => setIsMenuOpen(false)}
-                      whileHover={{ rotate: 90 }}
+                      whileHover={{ rotate: 90, scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
                       className="p-2"
                       aria-label="Close menu"
                     >
@@ -210,21 +216,21 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                   </div>
 
                   {/* Mobile Navigation Items */}
-                  <ul className="flex flex-col gap-6">
+                  <ul className="flex flex-col gap-4">
                     {navItems.map((item, index) => (
                       <motion.li
                         key={index}
                         initial={{ x: 20, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: index * 0.1 }}
+                        transition={{ delay: index * 0.1, type: 'spring' }}
                       >
                         <a
                           href={item.href}
                           onClick={() => setIsMenuOpen(false)}
-                          className={`block text-lg font-medium px-4 py-3 rounded-lg transition-colors
+                          className={`block text-lg font-medium px-4 py-3 rounded-lg transition-all duration-300
                             ${isDarkMode 
-                              ? 'text-gray-200 hover:bg-gray-700' 
-                              : 'text-gray-800 hover:bg-gray-100'}`}
+                              ? 'text-gray-200 hover:bg-gray-700 hover:pl-6' 
+                              : 'text-gray-800 hover:bg-gray-100 hover:pl-6'}`}
                         >
                           {item.name}
                         </a>
@@ -237,12 +243,12 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                     className="mt-auto"
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.4 }}
+                    transition={{ delay: 0.4, type: 'spring' }}
                   >
                     <a
                       href="#contact"
                       onClick={() => setIsMenuOpen(false)}
-                      className={`flex items-center justify-center gap-2 w-full py-3 px-6 rounded-full font-medium
+                      className={`flex items-center justify-center gap-2 w-full py-3 px-6 rounded-full font-medium transition-all duration-300 hover:gap-3
                         ${isDarkMode 
                           ? 'bg-blue-600 text-white hover:bg-blue-700' 
                           : 'bg-blue-600 text-white hover:bg-blue-700'}`}

@@ -30,6 +30,7 @@ const Contact = ({ isDarkMode }) => {
   };
 
   return (
+    <div className="w-screen min-w-full overflow-x-hidden">
     <motion.section 
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
@@ -242,7 +243,7 @@ const Contact = ({ isDarkMode }) => {
                 </div>
                 <div>
                   <h4 className={`text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Email Address</h4>
-                  <p className={`text-xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>odarobahospital@gmail.com</p>
+                  <p className={`text-xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>odaroba2015@gmail.com</p>
                   <p className={`mt-1 text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Response within 24 hours</p>
                 </div>
               </motion.div>
@@ -289,6 +290,7 @@ const Contact = ({ isDarkMode }) => {
         </div>
       </div>
     </motion.section>
+    </div>
   )
 }
 

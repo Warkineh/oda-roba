@@ -57,7 +57,7 @@ const Services = ({ isDarkMode }) => {
     },
     { 
       name: 'Radiology', 
-      icon: '📷',
+      icon: '🩻',
       shortDesc: 'Diagnostic imaging',
       fullDesc: 'High-quality imaging services including X-rays, ultrasounds, CT scans, and MRIs with expert interpretation.'
     },
@@ -88,51 +88,51 @@ const Services = ({ isDarkMode }) => {
   ];
 
   return (
-    <section id='services' className={`py-16 px-4 sm:px-6 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
-      <div className="max-w-6xl mx-auto">
+    <section id='services' className={`py-12 px-2 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
+      <div className="max-w-6xl mx-auto px-2 sm:px-3">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-10"
         >
-          <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+          <h2 className={`text-3xl md:text-4xl font-bold mb-3 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
             Our <span className={`${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>Healthcare Services</span>
           </h2>
-          <div className={`w-20 h-1 mx-auto mb-4 ${isDarkMode ? 'bg-blue-500' : 'bg-blue-600'}`}></div>
+          <div className={`w-20 h-1 mx-auto mb-3 ${isDarkMode ? 'bg-blue-500' : 'bg-blue-600'}`}></div>
           <p className={`max-w-2xl mx-auto text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
             Comprehensive healthcare across 12+ specialized departments
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {services.map((service, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 30 }} 
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ scale: 1.02 }}
-              className={`rounded-xl p-5 flex flex-col transition-all duration-300
+              className={`rounded-lg p-3 sm:p-4 flex flex-col transition-all duration-300
                         ${isDarkMode 
                           ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/20' 
                           : 'bg-white border-gray-200 hover:shadow-lg'}
-                        border hover:shadow-xl ${expandedCards.includes(index) ? 'h-auto' : 'h-48'}`}
+                        border hover:shadow-md ${expandedCards.includes(index) ? 'h-auto' : 'h-44'}`}
             >
-              <div className="flex items-start mb-4">
+              <div className={`flex items-start mb-2 ${isDarkMode ? 'bg-gray-700' : 'bg-slate-200'}`}>
                 <motion.div 
                   whileHover={{ rotate: 5, scale: 1.1 }}
-                  className={`w-12 h-12 rounded-lg flex items-center justify-center text-3xl mr-4
+                  className={`w-10 h-10 rounded-lg flex items-center justify-center text-2xl mr-3
                               ${isDarkMode ? 'bg-blue-900/30 text-blue-400' : 'bg-blue-100 text-blue-600'}`}
                 >
                   {service.icon}
                 </motion.div>
-                <h3 className={`text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
+                <h3 className={`text-md font-semibold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
                   {service.name}
                 </h3>
               </div>
               
-              <p className={`mb-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+              <p className={`mb-2 text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                 {service.shortDesc}
               </p>
               
@@ -141,7 +141,7 @@ const Services = ({ isDarkMode }) => {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  className={`mb-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}
+                  className={`mb-2 text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}
                 >
                   {service.fullDesc}
                 </motion.p>
@@ -151,14 +151,14 @@ const Services = ({ isDarkMode }) => {
                 whileHover={{ x: 2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => toggleCardExpand(index)}
-                className={`mt-auto text-sm font-medium self-start flex items-center
+                className={`mt-auto text-xs sm:text-sm font-medium self-start flex items-center
                            ${isDarkMode 
                              ? 'text-blue-400 hover:text-blue-300' 
                              : 'text-blue-600 hover:text-blue-800'}`}
               >
                 {expandedCards.includes(index) ? 'Show Less' : 'Learn More'}
                 <svg 
-                  className={`w-4 h-4 ml-1 transition-transform duration-300
+                  className={`w-3 h-3 ml-1 transition-transform duration-300
                             ${expandedCards.includes(index) ? 'rotate-180' : ''}`}
                   fill="none" 
                   viewBox="0 0 24 24" 

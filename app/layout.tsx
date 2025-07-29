@@ -2,6 +2,13 @@ import { ReactNode } from "react";
 import { Outfit, Ovo } from "next/font/google";
 import "./globals.css";
 
+<head>
+  <meta 
+    name="viewport" 
+    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+  />
+</head>
+
 const outfit = Outfit({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"]
