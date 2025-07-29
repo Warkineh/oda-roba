@@ -37,7 +37,7 @@ const Machines = ({ isDarkMode }) => {
             'Advanced Doppler for blood flow analysis',
             'Multiplanar reconstruction capabilities',
           ],
-          image: '/images/machines/Ultrasound.png'
+          image: '/images/machines/ultrasound.png'
         },
         { 
           name: 'Defibrillator Machine', 
